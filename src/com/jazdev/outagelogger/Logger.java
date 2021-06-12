@@ -16,7 +16,7 @@ import java.util.Date;
 
 /**
  *
- * @author Jaz
+ * @author JazDev
  */
 public class Logger {
     /**
