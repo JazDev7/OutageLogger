@@ -39,7 +39,7 @@ public class OuttageLogger {
                     logOuttage();
 
                 } else {
-                    System.out.println("Connection up.");
+                    // System.out.println("Connection up.");
                 }
                 Thread.sleep(10000);
             } catch(InterruptedException | IOException e) {
@@ -53,8 +53,10 @@ public class OuttageLogger {
      */
     public void logOuttage() throws IOException {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); 
-        BufferedWriter  out = new BufferedWriter (new FileWriter(new File("log.txt"), true), 32768);
-        out.write("Outtage noted at: " + formatter.format(new Date()) + "\n");
+        BufferedWriter out = new BufferedWriter (new FileWriter(new File("log.txt"), true), 32768);
+        String msg = "Outtage noted at: " + formatter.format(new Date()) + "\n";
+        System.out.println(msg);
+        out.write(msg);
         out.close();
     }
 }

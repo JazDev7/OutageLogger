@@ -1,14 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.jazdev.outagelogger;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Program starts here
@@ -17,20 +10,36 @@ import java.util.logging.Logger;
 public class App {
     /**
      * 
-     * @param args command line arguments (unused)
+     * @param args command line arguments
      */
     public static void main(String[] args) {
         OuttageLogger oL = null;
+        InetAddress host = null;
         
-        try {
-            final InetAddress host = InetAddress.getByName("google.com");
+        // Try to ping a specific host, or 'google.com' if none specified
+        System.out.println("Checking host...");
+        try { 
+            if(args.length == 0) {
+                host = InetAddress.getByName("google.com");
+            } else {
+                host = InetAddress.getByName(args[0]);
+            }
             oL = new OuttageLogger(host);
+            System.out.println(host.getHostName() + " host good!");
         } catch (UnknownHostException e) {
             System.err.println(e);
         }
-        
-        while(oL != null) {
-            oL.checkConnection();
+
+        // Begin logging
+        if(oL == null) {
+            System.out.println("Failed to initialize OuttageLogger...");
+            System.out.println("Program will now exit");
+        } else {
+            System.out.println("OuttageLogger now monitoring...");
+            while(true) {
+                oL.checkConnection();
+            }
         }
+        
     }
 }
