@@ -13,14 +13,14 @@ import java.util.Date;
  * time and date if said host cannot be reached
  * @author JazDev
  */
-public class OuttageLogger {
+public class OutageLogger {
     private InetAddress host;
     
-    public OuttageLogger() {
+    public OutageLogger() {
         host = null;
     }
     
-    public OuttageLogger(InetAddress host) {
+    public OutageLogger(InetAddress host) {
         this.host = host;
     }
     

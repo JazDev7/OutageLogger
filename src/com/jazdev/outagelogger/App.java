@@ -13,7 +13,7 @@ public class App {
      * @param args command line arguments
      */
     public static void main(String[] args) {
-        OuttageLogger oL = null;
+        OutageLogger oL = null;
         InetAddress host = null;
         
         // Try to ping a specific host, or 'google.com' if none specified
@@ -24,7 +24,7 @@ public class App {
             } else {
                 host = InetAddress.getByName(args[0]);
             }
-            oL = new OuttageLogger(host);
+            oL = new OutageLogger(host);
             System.out.println(host.getHostName() + " host good!");
         } catch (UnknownHostException e) {
             System.err.println(e);
