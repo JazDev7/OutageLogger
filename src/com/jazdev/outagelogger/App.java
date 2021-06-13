@@ -24,15 +24,15 @@ public class App {
             } else {
                 host = InetAddress.getByName(args[0]);
             }
-            oL = new OutageLogger(host);
             System.out.println(host.getHostName() + " host good!");
+            oL = new OutageLogger(host);
         } catch (UnknownHostException e) {
             System.err.println(e);
         }
 
         // Begin logging
         if(oL == null) {
-            System.out.println("Failed to initialize OuttageLogger...");
+            System.out.println("Failed to initialize OutageLogger...");
             System.out.println("Program will now exit");
         } else {
             System.out.println("OuttageLogger now monitoring...");
